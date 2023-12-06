@@ -1,0 +1,47 @@
+<!-- list-product.component.html -->
+<div class="list-container">
+    <h2>Product List</h2>
+  
+    <div class="search-container">
+      <mat-form-field class="search-input">
+        <mat-label>Search Product</mat-label>
+
+        <input matInput type="text" [(ngModel)]="searchProduct" (ngModelChange)="searchProductList()">
+      </mat-form-field>
+    </div>
+  
+    <div class="insert-button-container">
+      <button mat-raised-button color="primary" routerLink="/create-product">Insert Product</button>
+    </div>
+  
+    <table class="centered-table mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Name</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td>{{ product.productId }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.unitPrice }}</td>
+          <td>{{ product.quantity }}</td>
+  
+          <td class="options-cell">
+            <div class="options-wrapper">
+              <button mat-icon-button color="primary" [routerLink]="['/editNo/', product.productId]">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteProduct(product.productId)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

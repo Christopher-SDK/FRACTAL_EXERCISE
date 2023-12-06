@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <title>Login</title>
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form [formGroup]="registerForm">
+                <h1>Crear Cuenta</h1>
+                <span>Crea tus credenciales</span>
+                <input matInput formControlName="userName_Register" placeholder="Nombre de usuario"
+                    class="styled-input">
+                <div
+                    *ngIf="loginForm.get('userName_Register')?.hasError('required') && loginForm.get('userName_Register')?.touched">
+                    <span style="color: red">Este campo es obligatorio</span>
+                </div>
+                <input matInput formControlName="password_Register" placeholder="Contraseña"
+                    [type]=" hide?'password_Register':'text' ">
+                <div
+                    *ngIf="loginForm.get('password_Register')?.hasError('required') && loginForm.get('password_Register')?.touched">
+                    <span style="color: red">Este campo es obligatorio</span>
+                </div>
+
+                <input matInput formControlName="firstName" placeholder="Nombre" class="styled-input">
+                <div
+                    *ngIf="registerForm.get('firstName')?.hasError('required') && registerForm.get('firstName')?.touched">
+                    <span style="color: red">Este campo es obligatorio</span>
+                </div>
+
+                <input matInput formControlName="lastName" placeholder="Apellido" class="styled-input">
+                <div
+                    *ngIf="registerForm.get('lastName')?.hasError('required') && registerForm.get('lastName')?.touched">
+                    <span style="color: red">Este campo es obligatorio</span>
+                </div>
+
+                <div class="date-picker-container">
+                    <input matInput formControlName="birthdate" placeholder="Fecha de nacimiento" [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker" class="mat-datepicker-toggle-default-icon">
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-datepicker-toggle>
+                </div>
+                <div
+                    *ngIf="registerForm.get('birthdate')?.hasError('required') && registerForm.get('birthdate')?.touched">
+                    <span style="color: red">Este campo es obligatorio</span>
+                </div>
+
+                <mat-select formControlName="userType" placeholder="Rol" class="styled-input">
+                    <mat-option value="ROLE_USUARIO">Usuario</mat-option>
+                </mat-select>
+
+                <div *ngIf="loginForm.get('userType')?.hasError('required') && loginForm.get('userType')?.touched">
+                    <span style="color: red">Seleccionar un tipo de usuario es obligatorio</span>
+                </div>
+
+
+                <button id="registerUserButton" (click)="registerUser()">Registrar</button>
+
+            </form>
+        </div>
+
+
+
+
+        <div class="form-container sign-in">
+            <form [formGroup]="loginForm">
+                <h1>¡Inicia sesión!</h1>
+                <span>Usa tus credenciales según corresponda</span>
+                <input matInput formControlName="userName" placeholder="Nombre de usuario" class="styled-input">
+                <div *ngIf="loginForm.get('userName')?.hasError('required') && loginForm.get('userName')?.touched">
+                    <span style="color: red">Este campo es obligatorio</span>
+                </div>
+                <input matInput formControlName="password" placeholder="Contraseña" [type]=" hide?'password':'text' ">
+                <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+                    <span style="color: red">Este campo es obligatorio</span>
+                </div>
+
+                <button (click)="loginUser()" [disabled]="loginForm.invalid">Iniciar sesión</button>
+
+                <button (click)="cancelar()">Cancelar</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>¡Bienvenido denuevo!</h1>
+                    <p>Ingresa tu información personal para utilizar las funciones disponibles</p>
+                    <button class="hidden" id="login">Iniciar sesión</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>¡Hola, compa!</h1>
+                    <p>Registrate con tu información personal para utilizar las funciones disponibles</p>
+
+                    <button class="hidden" id="register">Registrate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

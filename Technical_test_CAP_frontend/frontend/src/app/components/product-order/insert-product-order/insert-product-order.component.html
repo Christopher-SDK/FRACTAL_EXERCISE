@@ -1,0 +1,48 @@
+<div class="custom-insert-container">
+    <h2>{{ modoInsertar ? 'Add New Product Order' : 'Update Product Order' }}</h2>
+  
+    <form [formGroup]="customProductOrderForm" (ngSubmit)="addCustomProductOrder()">
+      <mat-form-field *ngIf="!modoInsertar">
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="idProductOrder" readonly="true">
+      </mat-form-field>
+  
+      <mat-form-field class="custom-form-field">
+        <mat-label>Product</mat-label>
+        <mat-select formControlName="productId" placeholder="Select a product">
+          <mat-option *ngFor="let product of productList" [value]="product.productId">
+            {{ product.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field class="custom-form-field">
+        <mat-label>Order</mat-label>
+        <mat-select formControlName="orderId" placeholder="Select an order">
+          <mat-option *ngFor="let order of orderList" [value]="order.orderId">
+            {{ order.orderNumber }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field *ngIf="!modoInsertar" class="custom-form-field" >
+        <mat-label>User Id</mat-label>
+        <input matInput formControlName="userId" readonly="true">
+      </mat-form-field>
+
+      <mat-form-field class="custom-form-field" *ngIf="!modoInsertar">
+        <mat-label>Total Amount</mat-label>
+        <input matInput formControlName="totalAmount" readonly="true">
+      </mat-form-field>
+  
+      <div class="custom-button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="customProductOrderForm.invalid">
+          {{ modoInsertar ? 'Add Custom Product Order' : 'Update Custom Product Order' }}
+        </button>
+        <button mat-raised-button color="accent" routerLink="/product-order" class="custom-back-button">
+          Back to Product Orders
+        </button>
+      </div>
+    </form>
+  </div>
+  

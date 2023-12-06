@@ -1,0 +1,48 @@
+<div class="list-container">
+    <h2>Product Order List</h2>
+  
+    <div class="search-container">
+      <mat-form-field class="search-input">
+        <mat-label>Search in all Columns</mat-label>
+        <input matInput type="text" [(ngModel)]="searchProductOrders" (ngModelChange)="searchProductOrderList()">
+      </mat-form-field>
+    </div>
+
+    <div class="insert-button-container">
+        <button mat-raised-button color="primary" routerLink="/create-product-order">Insert Relation</button>
+      </div>
+  
+    <table class="centered-table mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Product Order ID</th>
+          <th>Product ID</th>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Total Amount</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let productOrder of filteredProductOrders">
+          <td>{{ productOrder.idProductOrder }}</td>
+          <td>{{ productOrder.productId }}</td>
+          <td>{{ productOrder.orderId }}</td>
+          <td>{{ productOrder.userId }}</td>
+          <td>{{ productOrder.totalAmount }}</td>
+
+          <td class="options-cell">
+            <div class="options-wrapper">
+              <button mat-icon-button color="primary" [routerLink]="['/editPrOr/', productOrder.idProductOrder]">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteProductOrder(productOrder.idProductOrder)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

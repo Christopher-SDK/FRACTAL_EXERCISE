@@ -1,0 +1,57 @@
+.professor-toolbar {
+    position: relative;
+  }
+  
+  .espacio_extendido {
+    flex: 1 1 auto;
+  }
+  
+  .professor-toolbar::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    /* Grosor de la línea de resaltado */
+    background-color: #00bcd4;
+    /* Color celeste para la línea de resaltado */
+  }
+  
+  .professor-view {
+    background-color: #f0f0f0;
+    /* Color de fondo para la vista del profesor, ajusta según tu diseño */
+    padding: 16px;
+    /* Ajusta el espacio interno según tus preferencias */
+  }
+  
+  /* Estilos para el menú desplegable y su lista vertical */
+  .mat-menu-panel {
+    display: flex;
+    flex-direction: column;
+    /* Muestra la lista en una columna */
+  }
+  
+  .mat-menu-content {
+    flex-direction: column;
+    /* Muestra la lista en una columna */
+  }
+  
+  /* Estilos generales para los botones del menú */
+  button.mat-button {
+    color: #ffffff;
+    /* Color del texto en los botones */
+    margin: 8px 0;
+  }
+  
+  /* Estilos para el botón de menú desplegable */
+  button.mat-icon-button {
+    color: #ffffff;
+    /* Color del ícono del menú */
+  }
+  
+  /* Ajuste de color al pasar el ratón sobre los elementos del menú */
+  button.mat-menu-item:hover {
+    background-color: #0097a7;
+    /* Puedes cambiar el color al pasar el ratón según tu diseño */
+  }

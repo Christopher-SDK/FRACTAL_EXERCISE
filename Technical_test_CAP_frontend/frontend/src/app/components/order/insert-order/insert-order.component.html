@@ -1,0 +1,48 @@
+<div class="custom-insert-container">
+    <h2>{{ modoInsertar ? 'Add New Order' : 'Update Order' }}</h2>
+  
+    <form [formGroup]="customOrderForm" (ngSubmit)="addCustomOrder()">
+      <mat-form-field class="custom-form-field">
+        <mat-label>Order Number</mat-label>
+        <input matInput formControlName="orderNumber" placeholder="Enter order number" />
+      </mat-form-field>
+  
+      <mat-form-field class="custom-form-field">
+        <mat-label>Order Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="orderDate" placeholder="Enter order date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field class="custom-form-field">
+        <mat-label>Number of Products</mat-label>
+        <input matInput formControlName="numOfProducts" placeholder="Enter number of products" />
+      </mat-form-field>
+  
+      <mat-form-field class="custom-form-field">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" placeholder="Select order status">
+          <mat-option value="Pending">Pending</mat-option>
+          <mat-option value="InProgress">InProgress</mat-option>
+          <mat-option value="Completed">Completed</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field class="custom-form-field">
+        <mat-label>User Id</mat-label>
+        <input matInput formControlName="userId" readonly="true" />
+      </mat-form-field>
+  
+      <!-- Add more form fields as needed -->
+  
+      <div class="custom-button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="customOrderForm.invalid">
+          {{ modoInsertar ? 'Add Custom Order' : 'Update Custom Order' }}
+        </button>
+        <button mat-raised-button color="accent" routerLink="/order" class="custom-back-button">
+          Back to Orders
+        </button>
+      </div>
+    </form>
+  </div>
+  

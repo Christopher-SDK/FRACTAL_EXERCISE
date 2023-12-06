@@ -1,0 +1,35 @@
+<div class="custom-insert-container">
+    <h2>{{ modoInsertar ? 'Add New Product' : 'Update Product' }}</h2>
+  
+    <form [formGroup]="customProductForm" (ngSubmit)="addCustomProduct()">
+      <mat-form-field *ngIf="!modoInsertar">
+        <mat-label>Product Id</mat-label>
+        <input matInput formControlName="productId" readonly="true">
+      </mat-form-field>
+  
+      <mat-form-field class="custom-form-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter product name" />
+      </mat-form-field>
+  
+      <mat-form-field class="custom-form-field">
+        <mat-label>Unit Price</mat-label>
+        <input matInput formControlName="unitPrice" placeholder="Enter unit price" />
+      </mat-form-field>
+  
+      <mat-form-field class="custom-form-field">
+        <mat-label>Quantity</mat-label>
+        <input matInput formControlName="quantity" placeholder="Enter quantity" />
+      </mat-form-field>
+  
+      <div class="custom-button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="customProductForm.invalid">
+          {{ modoInsertar ? 'Add Custom Product' : 'Update Custom Product' }}
+        </button>
+        <button mat-raised-button color="accent" routerLink="/product" class="custom-back-button">
+          Back to Products
+        </button>
+      </div>
+    </form>
+  </div>
+  
